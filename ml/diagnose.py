@@ -7,6 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from tkinter import *
 import os 
 
+# class diagnosor
 class Diagnosor:
     DATA_PATH = "DataSet/Training.csv"
 
@@ -26,11 +27,12 @@ class Diagnosor:
         X = self.data.iloc[:, :-1]
         y = self.data.iloc[:, -1]
 
-
+        # declaring the models
         self.Final_GNB_Pred = GaussianNB()
         self.Final_SVC_Pred = SVC()
         self.Final_RFG_Pred = RandomForestClassifier(random_state=18)
 
+        #fitting the models
         self.Final_GNB_Pred.fit(X, y)
         self.Final_SVC_Pred.fit(X, y)
         self.Final_RFG_Pred.fit(X, y)
@@ -50,7 +52,7 @@ class Diagnosor:
         }
 
 
-
+    # getSymptoms function that returns all the symptoms the user chose
     def getSymptoms(self):
         X = self.data.iloc[:, :-1]
         return list(map(lambda i: i.replace('_', ' ').title(), X.columns.values))

@@ -26,16 +26,19 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    # /info endpoint for displaying the service info
     @app.route("/info")
     def info():
         return get_info()
 
+    # /symptoms endpoint for displaying the symptoms
     @app.route("/symptoms")
     def symptoms():
         diagnostic = Diagnosor()
         result = diagnostic.getSymptoms()
         return result
 
+    # /generate endpoint for returning the diagnostic
     @app.route("/generate/<symptoms>")
     def generate(symptoms):
         diagnostic = Diagnosor()      
@@ -43,7 +46,8 @@ def create_app(test_config=None):
         print("RESULT: ", result)
         return result
 
-
+    # /home for rending the Home page
+    # not being used currently
     @app.route("/home")
     def home():
         diagnostic = Diagnosor()

@@ -19,6 +19,9 @@ import Divider from '@mui/material/Divider';
 const backendBaseUrl = "http://127.0.0.1:5000"
 const MAX_SYMPTOMS_COUNT = 8;
 
+
+
+// Home page
 function App() {
   const [symptoms, setSymptoms] = useState([]);
   const [alertText, setAlertText] = useState();
@@ -26,6 +29,9 @@ function App() {
   const [AllSupportedSyptoms, setAllSupportedSyptoms] = useState([]);
   const [results, setResults] = useState();
 
+
+
+  // fetchSymptomsList function returns a json with all the symmptoms
   const fetchSymptomsList = () => {
     fetch(`${backendBaseUrl}/symptoms`)
       .then(response => {
@@ -36,6 +42,9 @@ function App() {
       })
   }
 
+
+
+  // fetchSymptomsList function returns a json with all the symmptoms
   const fetchDignoseResult = (symps) => {
     fetch(`${backendBaseUrl}/generate/${symps}`)
       .then(response => {
@@ -59,6 +68,9 @@ function App() {
       })
   }
 
+
+
+  // useEffect() is called when the page needs to be re-rendered
   useEffect(() => {
     fetchSymptomsList()
     if (symptoms.length === 0) {
@@ -66,6 +78,9 @@ function App() {
     }
   }, [symptoms.length]);
 
+
+
+  // onSelectSymptom function adds the selected symptom from user to an array
   const onSelectSymptom = (index, e) => {
     const v = e.target.value;
     const exist = symptoms.find(i => i === v);
@@ -80,6 +95,9 @@ function App() {
     setAlertText()
   }
 
+
+
+  // onAddSymptoms function that adds a drop-down menu when user clicks "add" button
   const onAddSymptoms = () => {
     if (symptoms.length < MAX_SYMPTOMS_COUNT) {
       const newsymp = [...symptoms];
@@ -93,6 +111,9 @@ function App() {
     }
   }
 
+
+
+  // onDeleteSymptoms function that deletes a drop-down menu when user clicks "delete" button
   const onDeleteSymptoms = () => {
     const newsymp = [...symptoms];
     newsymp.pop()
@@ -100,6 +121,9 @@ function App() {
     setAlertText()
   }
 
+
+
+  // onSubmit function that returns the diagnostic when user clicks "generate" button
   const onSubmit = () => {
     const exist = symptoms.find(i => i < 0);
     if (exist) {
@@ -118,6 +142,10 @@ function App() {
 
   }
 
+
+
+  // renderSymptomDropdown function is what puts the drop-down menus into display
+  // so the user can see it
   const renderSymptomDropdown = (value, index) => {
     const label = "Please select symptom";
     const id = `select-${index}`;
@@ -144,6 +172,9 @@ function App() {
     )
   }
 
+
+
+  // Container that contains and displays all the drop-down menus, add button, remove button...
   return (
     <Container maxWidth="xl">
       <Grid container direction="column" justifyContent="flex-start" alignItems="center" spacing={2}>

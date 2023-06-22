@@ -12,7 +12,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 
-
+# class training
 class training:
     # Reading the train.csv by removing the
     # last column since it's an empty column
@@ -59,7 +59,7 @@ class training:
         self.test_Y = self.Encoder.transform(test_data.iloc[:, -1])
 
 
-
+    # calibrate function
     def calibrate(self):
          # Defining scoring metric for k-fold cross validation
         def cv_scoring(estimator, X, y):
@@ -91,7 +91,6 @@ class training:
             print(Names_Models)
             print("Scores: ", numpy.array2string(Scores))
             print("Mean Score: ", np.mean(Scores))
-        dw1
 
 
         # Training and testing Guassian NB classifier

@@ -89,7 +89,7 @@ def predictDisease(symptoms):
     return predictions
 
 
-
+# testing
 Symptoms = "Itching,Skin Rash"
 
 

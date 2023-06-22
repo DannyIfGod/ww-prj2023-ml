@@ -19,8 +19,11 @@ import Divider from '@mui/material/Divider';
 const backendBaseUrl = "http://127.0.0.1:5000"
 
 
+
+// Info page
 function Info() {
 
+  // Container that holds all the text and home botton
   return (
     <Container maxWidth="xl">
 
